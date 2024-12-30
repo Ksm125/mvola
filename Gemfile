@@ -10,12 +10,12 @@ gem "jwt", "~> 2.9"
 gem "public_suffix", "~> 4.0"
 
 group :development, :test do
-  gem "faker"
+  gem "faker", "< 3.0"
   gem "standard", "~> 1.3"
 end
 
 group :development do
-  gem "overcommit"
+  gem "overcommit", "~> 0.62"
 end
 
 group :test do
