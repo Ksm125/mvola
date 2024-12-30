@@ -1,0 +1,32 @@
+module MVola
+  class Client
+    include Request
+
+    SANDBOX_URL: String
+    PRODUCTION_URL: String
+
+    @consumer_key: String
+    @consumer_secret: String
+    @sandbox: bool
+    @mutex: Mutex
+    @token: String?
+
+    attr_reader consumer_key: String
+    attr_reader consumer_secret: String
+    attr_reader sandbox: bool
+    alias sandbox? sandbox
+
+    def initialize: (consumer_key: String, consumer_secret: String, ?sandbox: bool) -> void
+
+    def token: () -> Token
+
+    private
+
+    # This method is used to determine the base URL for the API requests.
+    def base_url: () -> String
+
+    def headers: () -> Hash[String, String]
+
+    def fetch_token: () -> Hash[Symbol, String]
+  end
+end

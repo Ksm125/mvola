@@ -1,0 +1,5 @@
+module MVola
+  VERSION: String
+
+  attr_accessor self.logger: Logger
+end

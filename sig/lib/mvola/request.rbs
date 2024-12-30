@@ -1,0 +1,13 @@
+module MVola
+  module Request
+    def get: (String url, ?::Hash[untyped, untyped] args) -> Net::HTTPResponse
+
+    def post: (String url, ?::Hash[untyped, untyped] args) -> Net::HTTPResponse
+
+    private
+
+    def build_http: (URI uri, Hash[untyped, untyped] args) -> Net::HTTP
+
+    def handle_error: (Net::HTTPResponse response) -> void
+  end
+end

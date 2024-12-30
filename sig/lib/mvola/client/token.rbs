@@ -1,0 +1,18 @@
+module MVola
+  class Client
+    class Token
+      attr_reader access_token: String
+      attr_reader scope: String
+      attr_reader token_type: String
+      attr_reader expires_at: Time
+
+      def initialize: (
+        access_token: String,
+        scope: String,
+        token_type: String,
+        expires_at: Time
+        ) -> void
+
+      def expired?: () -> bool
+    end
+end
