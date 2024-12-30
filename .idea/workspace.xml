@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ee709d9-5032-4689-a8a2-5717386c6afb" name="Changes" comment="Add test">
+    <list default="true" id="7ee709d9-5032-4689-a8a2-5717386c6afb" name="Changes" comment="chore: support for ruby 2.5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mvola/client.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mvola/client.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sig/lib/mvola/client.rbs" beforeDir="false" afterPath="$PROJECT_DIR$/sig/lib/mvola/client.rbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVola.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/mvola.gemspec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Ksm125"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ksm125/mvola.git",
+    "accountId": "af598ffa-aee9-4bd7-ac2a-98544fb8094c"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -40,12 +50,17 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultRubyCreateTestTemplate": "RSpec",
+    "RSpec.All specs in spec: MVola.executor": "Run",
     "RSpec.MVola.executor": "Run",
     "RSpec.MVola::Client#token fetches a new token from provider if no token defined.executor": "Debug",
     "RSpec.MVola::Client#token only fetches token once if called multiple times.executor": "Run",
     "RSpec.MVola::Client#token refreshes the token if expires margin is reached.executor": "Run",
     "RSpec.MVola::Client#token refreshes the token if no longer valid.executor": "Run",
     "RSpec.MVola::Client#token when sandbox is false.executor": "Run",
+    "RSpec.MVola::Client#token when token is provided uses the provided token.executor": "Run",
+    "RSpec.MVola::Client#token when token is provided when token is a Token object.executor": "Run",
+    "RSpec.MVola::Client#token when token is provided when token is a hash uses the provided token.executor": "Run",
+    "RSpec.MVola::Client#token when token is provided when token is a hash.executor": "Run",
     "RSpec.MVola::Client#token! forces the token to be refreshed.executor": "Run",
     "RSpec.MVola::Client.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -70,7 +85,43 @@
   <component name="RubocopSettings">
     <option name="useStandard" value="true" />
   </component>
-  <component name="RunManager" selected="RSpec.MVola::Client#token fetches a new token from provider if no token defined">
+  <component name="RunManager" selected="RSpec.All specs in spec: MVola">
+    <configuration name="All specs in spec: MVola" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <module name="MVola" />
+      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$MODULE_DIR$/spec" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="ALL_IN_FOLDER" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <method v="2" />
+    </configuration>
     <configuration name="MVola::Client" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
@@ -107,7 +158,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="MVola::Client#token fetches a new token from provider if no token defined" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="MVola::Client#token when token is provided when token is a Token object" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -130,7 +181,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token fetches a new token from provider if no token defined" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token when token is provided when token is a Token object" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -143,7 +194,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="MVola::Client#token refreshes the token if expires margin is reached" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="MVola::Client#token when token is provided when token is a hash uses the provided token" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -166,7 +217,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token refreshes the token if expires margin is reached" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token when token is provided when token is a hash uses the provided token" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -179,7 +230,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="MVola::Client#token when sandbox is false" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="MVola::Client#token when token is provided when token is a hash" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -202,43 +253,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token when sandbox is false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MVola::Client#token! forces the token to be refreshed" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
-      <module name="MVola" />
-      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/client_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token! forces the token to be refreshed" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token when token is provided when token is a hash" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -253,11 +268,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="RSpec.MVola::Client#token fetches a new token from provider if no token defined" />
+        <item itemvalue="RSpec.All specs in spec: MVola" />
         <item itemvalue="RSpec.MVola::Client" />
-        <item itemvalue="RSpec.MVola::Client#token! forces the token to be refreshed" />
-        <item itemvalue="RSpec.MVola::Client#token when sandbox is false" />
-        <item itemvalue="RSpec.MVola::Client#token refreshes the token if expires margin is reached" />
+        <item itemvalue="RSpec.MVola::Client#token when token is provided when token is a Token object" />
+        <item itemvalue="RSpec.MVola::Client#token when token is provided when token is a hash uses the provided token" />
+        <item itemvalue="RSpec.MVola::Client#token when token is provided when token is a hash" />
       </list>
     </recent_temporary>
   </component>
@@ -279,7 +294,7 @@
       <updated>1735546561998</updated>
       <workItem from="1735546563290" duration="476000" />
       <workItem from="1735547047278" duration="445000" />
-      <workItem from="1735547500779" duration="18482000" />
+      <workItem from="1735547500779" duration="20871000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -321,7 +336,47 @@
       <option name="project" value="LOCAL" />
       <updated>1735567824712</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add support of reuse provided token to the client">
+      <option name="closed" value="true" />
+      <created>1735570505239</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1735570505239</updated>
+    </task>
+    <task id="LOCAL-00007" summary="chore: update ci">
+      <option name="closed" value="true" />
+      <created>1735570907110</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1735570907110</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chore: update gemspec">
+      <option name="closed" value="true" />
+      <created>1735571014085</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1735571014085</updated>
+    </task>
+    <task id="LOCAL-00009" summary="chore: update bundler version">
+      <option name="closed" value="true" />
+      <created>1735571341431</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1735571341431</updated>
+    </task>
+    <task id="LOCAL-00010" summary="chore: support for ruby 2.5">
+      <option name="closed" value="true" />
+      <created>1735571747042</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735571747042</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,30 +388,26 @@
     <MESSAGE value="Add Mvola client" />
     <MESSAGE value="chore: Add forwadable to request" />
     <MESSAGE value="Add test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add test" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/spec/mvola/client_spec.rb</url>
-          <line>68</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Add support of reuse provided token to the client" />
+    <MESSAGE value="chore: update ci" />
+    <MESSAGE value="chore: update gemspec" />
+    <MESSAGE value="chore: update bundler version" />
+    <MESSAGE value="chore: support for ruby 2.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: support for ruby 2.5" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_fetches_a_new_token_from_provider_if_no_token_defined.rcov" NAME="MVola::Client#token fetches a new token from provider if no token defined Coverage Results" MODIFIED="1735568381148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_refreshes_the_token_if_expires_margin_is_reached.rcov" NAME="MVola::Client#token refreshes the token if expires margin is reached Coverage Results" MODIFIED="1735567486982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
-    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_only_fetches_token_once_if_called_multiple_times.rcov" NAME="MVola::Client#token only fetches token once if called multiple times Coverage Results" MODIFIED="1735567047662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
-    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token__forces_the_token_to_be_refreshed.rcov" NAME="MVola::Client#token! forces the token to be refreshed Coverage Results" MODIFIED="1735567730827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
-    <SUITE FILE_PATH="coverage/MVola@MVola.rcov" NAME="MVola Coverage Results" MODIFIED="1735561351336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
-    <SUITE FILE_PATH="coverage/MVola@MVola__Client.rcov" NAME="MVola::Client Coverage Results" MODIFIED="1735567734938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_token_is_provided_when_token_is_a_Token_object.rcov" NAME="MVola::Client#token when token is provided when token is a Token object Coverage Results" MODIFIED="1735570284693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client.rcov" NAME="MVola::Client Coverage Results" MODIFIED="1735570342652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_refreshes_the_token_if_no_longer_valid.rcov" NAME="MVola::Client#token refreshes the token if no longer valid Coverage Results" MODIFIED="1735567436479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_sandbox_is_false.rcov" NAME="MVola::Client#token when sandbox is false Coverage Results" MODIFIED="1735567647666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@All_specs_in_spec__MVola.rcov" NAME="All specs in spec: MVola Coverage Results" MODIFIED="1735571716635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_fetches_a_new_token_from_provider_if_no_token_defined.rcov" NAME="MVola::Client#token fetches a new token from provider if no token defined Coverage Results" MODIFIED="1735570585651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_only_fetches_token_once_if_called_multiple_times.rcov" NAME="MVola::Client#token only fetches token once if called multiple times Coverage Results" MODIFIED="1735567047662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token__forces_the_token_to_be_refreshed.rcov" NAME="MVola::Client#token! forces the token to be refreshed Coverage Results" MODIFIED="1735567730827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_token_is_provided_when_token_is_a_hash.rcov" NAME="MVola::Client#token when token is provided when token is a hash Coverage Results" MODIFIED="1735570191807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola.rcov" NAME="MVola Coverage Results" MODIFIED="1735561351336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_token_is_provided_uses_the_provided_token.rcov" NAME="MVola::Client#token when token is provided uses the provided token Coverage Results" MODIFIED="1735569998034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_token_is_provided_when_token_is_a_hash_uses_the_provided_token.rcov" NAME="MVola::Client#token when token is provided when token is a hash uses the provided token Coverage Results" MODIFIED="1735570225099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
   </component>
 </project>

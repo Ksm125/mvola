@@ -6,13 +6,20 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 13.0"
-gem "rspec", "~> 3.0"
-gem "standard", "~> 1.3"
-gem "overcommit"
-gem "faker"
 gem "jwt", "~> 2.9"
+gem "public_suffix", "~> 4.0"
+
+group :development, :test do
+  gem "faker"
+  gem "standard", "~> 1.3"
+end
+
+group :development do
+  gem "overcommit"
+end
 
 group :test do
   gem "webmock"
   gem "timecop"
+  gem "rspec", "~> 3.0"
 end
