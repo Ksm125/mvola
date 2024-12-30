@@ -11,7 +11,7 @@ gem "public_suffix", "~> 4.0"
 
 group :development, :test do
   gem "faker", "< 3.0"
-  gem "standard", "~> 1.3"
+  gem "standard", "<= 1.37"
 end
 
 group :development do
