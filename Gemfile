@@ -8,6 +8,7 @@ gemspec
 gem "rake", "~> 13.0"
 gem "jwt", "~> 2.9"
 gem "public_suffix", "~> 4.0"
+gem "json", "<= 2.7"
 
 group :development, :test do
   gem "faker", "<= 2.22"
