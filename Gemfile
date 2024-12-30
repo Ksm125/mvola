@@ -10,7 +10,7 @@ gem "jwt", "~> 2.9"
 gem "public_suffix", "~> 4.0"
 
 group :development, :test do
-  gem "faker", "< 3.0"
+  gem "faker", "<= 2.22"
   gem "standard", "<= 1.37"
 end
 

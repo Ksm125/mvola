@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ee709d9-5032-4689-a8a2-5717386c6afb" name="Changes" comment="chore: support for ruby 2.5">
+    <list default="true" id="7ee709d9-5032-4689-a8a2-5717386c6afb" name="Changes" comment="chore: support for ruby 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MVola.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/mvola.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +295,7 @@
       <updated>1735546561998</updated>
       <workItem from="1735546563290" duration="476000" />
       <workItem from="1735547047278" duration="445000" />
-      <workItem from="1735547500779" duration="20871000" />
+      <workItem from="1735547500779" duration="21793000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -376,11 +377,84 @@
       <option name="project" value="LOCAL" />
       <updated>1735571747042</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="chore: support for ruby 2.5">
+      <option name="closed" value="true" />
+      <created>1735571921726</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1735571921726</updated>
+    </task>
+    <task id="LOCAL-00012" summary="chore: support for ruby 2">
+      <option name="closed" value="true" />
+      <created>1735572167773</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1735572167773</updated>
+    </task>
+    <task id="LOCAL-00013" summary="chore: support for ruby 2">
+      <option name="closed" value="true" />
+      <created>1735572398606</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735572398606</updated>
+    </task>
+    <task id="LOCAL-00014" summary="chore: support for ruby 2">
+      <option name="closed" value="true" />
+      <created>1735572428782</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1735572428782</updated>
+    </task>
+    <task id="LOCAL-00015" summary="chore: support for ruby 2">
+      <option name="closed" value="true" />
+      <created>1735572643584</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1735572643584</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="11bdcca4-6bc3-47a8-9892-523b7ae40d87" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="11bdcca4-6bc3-47a8-9892-523b7ae40d87">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
@@ -393,7 +467,8 @@
     <MESSAGE value="chore: update gemspec" />
     <MESSAGE value="chore: update bundler version" />
     <MESSAGE value="chore: support for ruby 2.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: support for ruby 2.5" />
+    <MESSAGE value="chore: support for ruby 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: support for ruby 2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_refreshes_the_token_if_expires_margin_is_reached.rcov" NAME="MVola::Client#token refreshes the token if expires margin is reached Coverage Results" MODIFIED="1735567486982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
@@ -401,7 +476,7 @@
     <SUITE FILE_PATH="coverage/MVola@MVola__Client.rcov" NAME="MVola::Client Coverage Results" MODIFIED="1735570342652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_refreshes_the_token_if_no_longer_valid.rcov" NAME="MVola::Client#token refreshes the token if no longer valid Coverage Results" MODIFIED="1735567436479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_sandbox_is_false.rcov" NAME="MVola::Client#token when sandbox is false Coverage Results" MODIFIED="1735567647666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
-    <SUITE FILE_PATH="coverage/MVola@All_specs_in_spec__MVola.rcov" NAME="All specs in spec: MVola Coverage Results" MODIFIED="1735571716635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@All_specs_in_spec__MVola.rcov" NAME="All specs in spec: MVola Coverage Results" MODIFIED="1735572137941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_fetches_a_new_token_from_provider_if_no_token_defined.rcov" NAME="MVola::Client#token fetches a new token from provider if no token defined Coverage Results" MODIFIED="1735570585651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_only_fetches_token_once_if_called_multiple_times.rcov" NAME="MVola::Client#token only fetches token once if called multiple times Coverage Results" MODIFIED="1735567047662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token__forces_the_token_to_be_refreshed.rcov" NAME="MVola::Client#token! forces the token to be refreshed Coverage Results" MODIFIED="1735567730827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
