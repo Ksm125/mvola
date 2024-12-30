@@ -7,12 +7,15 @@ module MVola
       attr_reader expires_at: Time
 
       def initialize: (
-        access_token: String,
-        scope: String,
-        token_type: String,
-        expires_at: Time
+          access_token: String,
+          scope: String,
+          token_type: String,
+          expires_at: Time
         ) -> void
 
       def expired?: () -> bool
+
+      def valid?: () -> bool
     end
+  end
 end

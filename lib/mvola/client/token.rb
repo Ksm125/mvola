@@ -7,6 +7,10 @@ module MVola
         Time.now >= expires_at - expires_margin
       end
 
+      def valid?
+        !expired?
+      end
+
       private
 
       # Add a margin to the expiration time to avoid using an expired token.

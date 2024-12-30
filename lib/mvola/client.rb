@@ -12,7 +12,7 @@ module MVola
     SANDBOX_URL = "https://devapi.mvola.mg"
     PRODUCTION_URL = "https://api.mvola.mg"
 
-    attr_reader :consumer_key, :consumer_secret, :sandbox, :token
+    attr_reader :consumer_key, :consumer_secret, :sandbox
     alias_method :sandbox?, :sandbox
 
     def initialize(consumer_key:, consumer_secret:, sandbox: false)
@@ -22,14 +22,23 @@ module MVola
       @mutex = Mutex.new
     end
 
+    # Get the token. If the token is not valid, it will be refreshed.
     def token
-      @token ||= @mutex.synchronize do
+      return @token if @token&.valid?
+
+      @token = @mutex.synchronize do
         data = fetch_token
         expires_at = Time.now + data[:expires_in]
         token_data = data.except(:expires_in).merge(expires_at: expires_at)
 
         Token.new(**token_data)
       end
+    end
+
+    # Force the token to be refreshed, even if it is still valid.
+    def token!
+      @token = nil
+      token
     end
 
     private

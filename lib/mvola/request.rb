@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 require "net/http"
-require "logger"
+require "forwardable"
 
 module MVola
   module Request
+    extend Forwardable
+
+    def_delegators MVola, :logger
+
     # Method to perform a GET request
     # @param url [String] the URL to perform the request
     # @param args [Hash] the arguments to pass to the request

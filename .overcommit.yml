@@ -1,0 +1,20 @@
+PreCommit:
+  Standard:
+    enabled: true
+    on_warn: warn
+    problem_on_unmodified_line: ignore
+    command: ['bundle', 'exec', 'standardrb']
+    exclude:
+      - 'bin/**/*'
+
+
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - '**/db/structure.sql' # Ignore trailing whitespace in generated files
+
+PrePush:
+  RSpec:
+    enabled: true
+    required: true
+    command: [ 'bundle', 'exec', 'rspec' ]

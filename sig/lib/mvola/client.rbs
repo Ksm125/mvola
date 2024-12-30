@@ -20,6 +20,8 @@ module MVola
 
     def token: () -> Token
 
+    def token!: () -> Token
+
     private
 
     # This method is used to determine the base URL for the API requests.
