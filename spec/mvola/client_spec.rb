@@ -50,7 +50,9 @@ RSpec.describe MVola::Client do
         expect(request).to have_been_made.once
         expect(token).to be_a(MVola::Client::Token)
 
-        expected_token_data = response_body.except(:expires_in).merge(expires_at: Time.now + response_body[:expires_in])
+        expected_token_data = response_body.dup
+        expires_in = expected_token_data.delete(:expires_in)
+        expected_token_data[:expires_at] = Time.now + expires_in
 
         expect(token).to eq(MVola::Client::Token.new(**expected_token_data))
       end
