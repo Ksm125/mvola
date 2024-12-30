@@ -1,5 +1,9 @@
 module MVola
   class Client
+    type token_data = Token
+      | { access_token: String, token_type: String, expires_at: DateTime, scope: String }
+      | { access_token: String, token_type: String, expires_in: String, scope: String }
+
     include Request
 
     SANDBOX_URL: String
@@ -16,7 +20,7 @@ module MVola
     attr_reader sandbox: bool
     alias sandbox? sandbox
 
-    def initialize: (consumer_key: String, consumer_secret: String, ?sandbox: bool) -> void
+    def initialize: (consumer_key: String, consumer_secret: String, ?sandbox: bool, ?token: token_data?) -> void
 
     def token: () -> Token
 
@@ -26,6 +30,8 @@ module MVola
 
     # This method is used to determine the base URL for the API requests.
     def base_url: () -> String
+
+    def build_token_from: (token_data) -> Token
 
     def headers: () -> Hash[String, String]
 

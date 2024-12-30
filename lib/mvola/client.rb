@@ -15,23 +15,20 @@ module MVola
     attr_reader :consumer_key, :consumer_secret, :sandbox
     alias_method :sandbox?, :sandbox
 
-    def initialize(consumer_key:, consumer_secret:, sandbox: false)
+    def initialize(consumer_key:, consumer_secret:, sandbox: false, token: nil)
       @consumer_key = consumer_key
       @consumer_secret = consumer_secret
       @sandbox = sandbox
       @mutex = Mutex.new
+      @token = build_token_from(token)
     end
 
     # Get the token. If the token is not valid, it will be refreshed.
     def token
       return @token if @token&.valid?
 
-      @token = @mutex.synchronize do
-        data = fetch_token
-        expires_at = Time.now + data[:expires_in]
-        token_data = data.except(:expires_in).merge(expires_at: expires_at)
-
-        Token.new(**token_data)
+      @mutex.synchronize do
+        @token = build_token_from(fetch_token)
       end
     end
 
@@ -46,6 +43,16 @@ module MVola
     # This method is used to determine the base URL for the API requests.
     def base_url
       sandbox? ? SANDBOX_URL : PRODUCTION_URL
+    end
+
+    # This method is used to build a token object from a hash or a token object.
+    def build_token_from(data)
+      return data if data.is_a?(Token)
+      return unless data.is_a?(Hash)
+
+      hash = data.dup
+      hash[:expires_at] ||= Time.now + hash.delete(:expires_in).to_i
+      Token.new(**hash)
     end
 
     def headers

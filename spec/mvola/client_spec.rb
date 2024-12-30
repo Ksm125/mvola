@@ -43,25 +43,6 @@ RSpec.describe MVola::Client do
   end
 
   describe "#token" do
-    context "when sandbox is false" do
-      let(:base_url) { MVola::Client::SANDBOX_URL }
-
-      subject(:client) do
-        described_class.new(
-          consumer_key: consumer_key,
-          consumer_secret: consumer_secret,
-          sandbox: true
-        )
-      end
-
-      it "fetches the token from the sandbox provider" do
-        client.token
-
-        expect(request).to have_been_made.once
-      end
-
-    end
-
     it "fetches a new token from provider if no token defined" do
       Timecop.freeze do
         token = client.token
@@ -100,6 +81,68 @@ RSpec.describe MVola::Client do
       end
 
       expect(request).to have_been_made.twice
+    end
+
+    context "when sandbox is false" do
+      let(:base_url) { MVola::Client::SANDBOX_URL }
+
+      subject(:client) do
+        described_class.new(
+          consumer_key: consumer_key,
+          consumer_secret: consumer_secret,
+          sandbox: true
+        )
+      end
+
+      it "fetches the token from the sandbox provider" do
+        client.token
+
+        expect(request).to have_been_made.once
+      end
+    end
+
+    context "when token is provided" do
+      subject(:client) do
+        described_class.new(
+          consumer_key: consumer_key,
+          consumer_secret: consumer_secret,
+          token: token
+        )
+      end
+
+      context "when token is a hash" do
+        let(:token) do
+          {
+            access_token: JWT.encode(Faker::Alphanumeric.alpha(number: 20), nil, "none"),
+            token_type: "Bearer",
+            scope: scope,
+            expires_at: Time.now + 3600
+          }
+        end
+
+        it "uses the provided token" do
+          expect(client.token).to eq(MVola::Client::Token.new(**token))
+
+          expect(request).not_to have_been_made
+        end
+      end
+
+      context "when token is a Token object" do
+        let(:token) do
+          MVola::Client::Token.new(
+            access_token: JWT.encode(Faker::Alphanumeric.alpha(number: 20), nil, "none"),
+            token_type: "Bearer",
+            scope: scope,
+            expires_at: Time.now + 3600
+          )
+        end
+
+        it "uses the provided token" do
+          expect(client.token).to eq(token)
+
+          expect(request).not_to have_been_made
+        end
+      end
     end
   end
 
