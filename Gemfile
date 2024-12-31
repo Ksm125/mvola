@@ -18,6 +18,7 @@ end
 
 group :development do
   gem "overcommit", "~> 0.62"
+  gem "bump", "~> 0.10.0"
 end
 
 group :test do

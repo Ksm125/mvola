@@ -1,0 +1,43 @@
+name: Release Gem
+on:
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: "Select the type of version bump"
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+
+
+jobs:
+  test:
+    uses: ./.github/workflows/ruby.yml
+
+  push:
+    needs: test
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      id-token: write
+
+      steps:
+        # Set up
+        - uses: actions/checkout@v4
+
+        - name: Set up Ruby
+          uses: ruby/setup-ruby@v1
+          with:
+            bundler-cache: true
+            ruby-version: ruby
+
+        - name: Bump version
+          run: bundle exec bump ${{ inputs.bump_type }} --no-commit --changelog --no-bundle
+
+        # Release
+        - name: Release
+        - run: bundle exec rake release
