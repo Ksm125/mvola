@@ -43,4 +43,4 @@ jobs:
       - name: Release
         env:
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-      - run: bundle exec rake release
+        run: bundle exec rake release
