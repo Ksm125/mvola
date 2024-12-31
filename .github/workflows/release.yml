@@ -1,4 +1,5 @@
 name: Release Gem
+
 on:
   workflow_dispatch:
     inputs:
@@ -25,19 +26,21 @@ jobs:
       contents: write
       id-token: write
 
-      steps:
-        # Set up
-        - uses: actions/checkout@v4
+    steps:
+      # Set up
+      - uses: actions/checkout@v4
 
-        - name: Set up Ruby
-          uses: ruby/setup-ruby@v1
-          with:
-            bundler-cache: true
-            ruby-version: ruby
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ruby
 
-        - name: Bump version
-          run: bundle exec bump ${{ inputs.bump_type }} --no-commit --changelog --no-bundle
+      - name: Bump version
+        run: bundle exec bump ${{ inputs.bump_type }} --no-commit --changelog --no-bundle
 
-        # Release
-        - name: Release
-        - run: bundle exec rake release
+      # Release
+      - name: Release
+        env:
+          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+      - run: bundle exec rake release
