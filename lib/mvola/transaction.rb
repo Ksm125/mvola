@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "client"
+require_relative "transaction/payment_status"
 
 module MVola
   class Transaction
@@ -12,10 +13,23 @@ module MVola
 
     attr_reader :client
 
-    def initialize(client: nil, user_language: "FR")
+    def initialize(client: nil)
       @client = client || Client.new
     end
 
+
+    # Initiate a payment from a debit phone number to a credit phone number.
+    # @param [Number | String] amount the amount to transfer
+    # @param [String] debit_phone_number the phone number to debit
+    # @param [String] credit_phone_number the phone number to credit
+    # @param [String] transaction_reference the transaction reference
+    # @param [String] original_transaction_reference the original transaction reference.
+    #   Defaults to the `transaction_reference` if not provided
+    # @param [String] client_correlation_id the client correlation ID. Defaults to a random UUID
+    # @param [String] description the description of the payment
+    # @param [String] callback_url the callback URL to use for the payment
+    # @param [Array<Hash>] metadata additional metadata to use for the payment.
+    #  Eg: [{ key: "fc", value: "USD" }, { key: "amountFc", value: "1" }]
     def initiate_payment!(amount:,
       debit_phone_number:,
       credit_phone_number:,
@@ -37,20 +51,33 @@ module MVola
         creditParty: [{key: "msisdn", value: credit_phone_number}],
         metadata: [{key: "partnerName", value: client.partner_name}, *metadata]
       }
+      headers = build_headers(client_correlation_id: client_correlation_id, callback_url: callback_url)
       logger.info "Initiating payment with payload: #{payload}"
-      post url_for, json: payload, headers: headers(client_correlation_id: client_correlation_id, callback_url: callback_url)
+      response = post(url_for, json: payload, headers: headers)
+      logger.info "Payment initiated. Response: #{response.body}"
+
+      parsed_body = JSON.parse(response.body)
+      PaymentStatus.new(parsed_body, client_correlation_id: client_correlation_id)
     end
 
-    def status(server_correlation_id, client_correlation_id: SecureRandom.uuid)
+    # Get the status of a payment using the server correlation ID.
+    # This can be used to poll the status of a payment.
+    def get_status(server_correlation_id, client_correlation_id: SecureRandom.uuid)
       url = url_for("status/#{server_correlation_id}")
 
-      get url, headers: headers(client_correlation_id: client_correlation_id)
+      headers = build_headers(client_correlation_id: client_correlation_id)
+      response = get(url, headers: headers)
+
+      parsed_body = JSON.parse(response.body)
+      PaymentStatus.new(parsed_body, client_correlation_id: client_correlation_id)
     end
 
-    def details(transaction_id, client_correlation_id: SecureRandom.uuid)
+    # Get the details of a transaction using the transaction ID returned from the API.
+    def get_details(transaction_id, client_correlation_id: SecureRandom.uuid)
       url = url_for(transaction_id)
 
-      get url, headers: headers(client_correlation_id: client_correlation_id)
+      headers = build_headers(client_correlation_id: client_correlation_id)
+      get url, headers: headers
     end
 
     private
@@ -61,7 +88,7 @@ module MVola
       Pathname.new(client.base_url).join(ENDPOINT, safe_path).to_s
     end
 
-    def headers(client_correlation_id:, callback_url: nil)
+    def build_headers(client_correlation_id:, callback_url: nil)
       value = {
         "Authorization" => "Bearer #{client.token.access_token}",
         "Version" => "1.0",
