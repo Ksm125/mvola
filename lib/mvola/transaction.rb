@@ -17,7 +17,6 @@ module MVola
       @client = client || Client.new
     end
 
-
     # Initiate a payment from a debit phone number to a credit phone number.
     # @param [Number | String] amount the amount to transfer
     # @param [String] debit_phone_number the phone number to debit
@@ -39,7 +38,6 @@ module MVola
       description: nil,
       callback_url: nil,
       metadata: [])
-
       payload = {
         amount: amount.to_s,
         currency: CURRENCY,

@@ -34,7 +34,6 @@ module MVola
       sandbox: false,
       user_language: USER_LANGUAGES[:fr],
       token: nil)
-
       raise ArgumentError, "consumer_key is required" unless consumer_key
       raise ArgumentError, "consumer_secret is required" unless consumer_secret
       raise ArgumentError, "partner_name is required" unless partner_name
