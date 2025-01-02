@@ -42,6 +42,11 @@ module MVola
       partner_phone_number = SANDBOX_PARTNER_PHONE_NUMBER if sandbox
       raise ArgumentError, "partner_phone_number is required" unless partner_phone_number
 
+      # Warn invalid user language if not one of the supported languages
+      unless USER_LANGUAGES.key?(user_language.downcase.to_sym)
+        logger.warn "Invalid user language: #{user_language}. Using default language: #{USER_LANGUAGES[:fr]}"
+      end
+
       @consumer_key = consumer_key
       @consumer_secret = consumer_secret
       @partner_name = partner_name
@@ -93,6 +98,7 @@ module MVola
       }
     end
 
+    # Perform a request to fetch a new token from the MVola API.
     def fetch_token
       url = URI.join(base_url, "token").to_s
       body = {
