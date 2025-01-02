@@ -6,6 +6,8 @@ RSpec.describe MVola::Client do
   let(:consumer_key) { Faker::Alphanumeric.alpha(number: 20) }
   let(:consumer_secret) { Faker::Alphanumeric.alpha(number: 20) }
   let(:scope) { "EXT_INT_MVOLA_SCOPE" }
+  let(:partner_name) { "My Partner" }
+  let(:partner_phone_number) { Faker::PhoneNumber.cell_phone }
 
   let(:base_url) { MVola::Client::PRODUCTION_URL }
   let(:request) do
@@ -34,7 +36,9 @@ RSpec.describe MVola::Client do
   subject(:client) do
     described_class.new(
       consumer_key: consumer_key,
-      consumer_secret: consumer_secret
+      consumer_secret: consumer_secret,
+      partner_name: partner_name,
+      partner_phone_number: partner_phone_number
     )
   end
 
@@ -92,7 +96,8 @@ RSpec.describe MVola::Client do
         described_class.new(
           consumer_key: consumer_key,
           consumer_secret: consumer_secret,
-          sandbox: true
+          sandbox: true,
+          partner_name: partner_name
         )
       end
 
@@ -108,7 +113,9 @@ RSpec.describe MVola::Client do
         described_class.new(
           consumer_key: consumer_key,
           consumer_secret: consumer_secret,
-          token: token
+          token: token,
+          partner_name: partner_name,
+          partner_phone_number: partner_phone_number
         )
       end
 
