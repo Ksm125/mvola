@@ -101,6 +101,7 @@ PLATFORMS
 DEPENDENCIES
   MVola!
   bump (~> 0.10.0)
+  bundler (<= 2.4)
   faker (<= 2.22)
   json (<= 2.7)
   jwt (~> 2.9)
@@ -114,4 +115,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.6.2
+   2.4.0
