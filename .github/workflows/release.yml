@@ -50,9 +50,8 @@ jobs:
 
       # Release
       - name: Release
+        uses: cadwallion/publish-rubygems-action@master
         env:
-          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-        run: |
-          env
-          echo "RUBYGEMS_API_KEY length: ${#RUBYGEMS_API_KEY}"
-          bundle exec rake release
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
+          RELEASE_COMMAND: rake release
