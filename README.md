@@ -2,6 +2,9 @@
 
 ![Build Status](https://github.com/Ksm125/mvola/actions/workflows/ruby.yml/badge.svg)
 
+<img width="739" alt="Screenshot 2025-01-03 at 12 29 10" src="https://github.com/user-attachments/assets/2cb4f056-cf50-48df-a88b-7797bb289719" />
+
+
 MVola is a Ruby gem that provides a simple way to interact with the [Mvola Payment API](https://mvola.mg/).
 
 ## Installation
