@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    MVola (0.1.0)
+    MVola (0.1.0.pre.alpha)
 
 GEM
   remote: https://rubygems.org/
