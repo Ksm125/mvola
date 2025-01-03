@@ -12,7 +12,7 @@ on:
           - minor
           - major
           - pre
-        default: patch
+        default: pre
 
 
 jobs:
@@ -28,8 +28,9 @@ jobs:
       id-token: write
 
     steps:
-      # Set up
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
