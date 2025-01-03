@@ -4,32 +4,48 @@ module MVola
       | { access_token: String, token_type: String, expires_at: DateTime, scope: String }
       | { access_token: String, token_type: String, expires_in: String, scope: String }
 
+    type user_language = :fr | :mg | 'fr' | 'mg'
+
     include Request
 
     SANDBOX_URL: String
     PRODUCTION_URL: String
+    SANDBOX_PARTNER_PHONE_NUMBER: String
+    USER_LANGUAGES: Hash[Symbol, String]
 
     @consumer_key: String
     @consumer_secret: String
+    @partner_name: String
+    @partner_phone_number: String
     @sandbox: bool
-    @mutex: Mutex
     @token: String?
+    @user_language: user_language
+    @mutex: Mutex
 
     attr_reader consumer_key: String
     attr_reader consumer_secret: String
+    attr_reader partner_name: String
+    attr_reader partner_phone_number: String
     attr_reader sandbox: bool
+    attr_reader user_language: user_language
+
     alias sandbox? sandbox
 
-    def initialize: (consumer_key: String, consumer_secret: String, ?sandbox: bool, ?token: token_data?) -> void
+    def initialize: (?consumer_key: String,
+        ?consumer_secret: String,
+        ?partner_name: String,
+        ?partner_phone_number: String,
+        ?user_language: user_language,
+        ?sandbox: bool,
+        ?token: token_data?) -> void
 
     def token: () -> Token
 
     def token!: () -> Token
 
-    private
-
-    # This method is used to determine the base URL for the API requests.
     def base_url: () -> String
+
+    private
 
     def build_token_from: (token_data) -> Token
 
