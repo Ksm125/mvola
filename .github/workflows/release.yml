@@ -45,11 +45,8 @@ jobs:
           git config --global user.name "$(git log -1 --pretty=format:'%an')"
           git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
 
-      - name: Bump version
-        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
-
-      - name: Install dependencies
-        run: bundle install --jobs 4 --retry 3
+#      - name: Bump version
+#        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
 
       # Release
       - name: Release
