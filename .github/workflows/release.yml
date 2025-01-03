@@ -26,7 +26,6 @@ jobs:
     permissions:
       contents: write
       id-token: write
-      secrets: read
 
     steps:
       - uses: actions/checkout@v4
@@ -49,11 +48,10 @@ jobs:
 #      - name: Bump version
 #        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
 
-      - name: Check environment variables
-        run: env
-
       # Release
       - name: Release
         env:
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-        run: bundle exec rake release
+        run: |
+          env
+          bundle exec rake release
