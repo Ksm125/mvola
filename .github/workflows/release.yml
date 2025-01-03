@@ -16,11 +16,11 @@ on:
 
 
 jobs:
-  test:
+  build:
     uses: ./.github/workflows/ruby.yml
 
   push:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
 
     permissions:
@@ -47,6 +47,9 @@ jobs:
 
 #      - name: Bump version
 #        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
+
+      - name: Check environment variables
+        run: env
 
       # Release
       - name: Release
