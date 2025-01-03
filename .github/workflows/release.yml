@@ -48,6 +48,8 @@ jobs:
       - name: Bump version
         run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
 
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
 
       # Release
       - name: Release
