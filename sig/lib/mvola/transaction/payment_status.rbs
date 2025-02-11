@@ -1,0 +1,46 @@
+module MVola
+  class Transaction
+    class PaymentStatus
+      extend Forwardable
+
+      type t_status = 'pending' | 'completed' | 'failed'
+      type t_notification_method = 'polling' | 'callback'
+
+      type init_payment_response = {
+          "status" => t_status,
+          "serverCorrelationId" => String,
+          "notificationMethod" => t_notification_method
+        }
+
+      type status_response = init_payment_response & {
+          "objectReference" => String
+        }
+
+      type t_raw_response = init_payment_response | status_response
+
+      @raw_response: t_raw_response
+
+      @client_correlation_id: String
+
+      attr_reader raw_response: t_raw_response
+
+      attr_reader client_correlation_id: String
+
+      def initialize: (t_raw_response raw_response, client_correlation_id: String) -> void
+
+      def status: () -> t_status
+
+      def server_correlation_id: () -> String
+
+      def notification_method: () -> t_notification_method
+
+      def transaction_reference: () -> String?
+
+      def pending?: () -> bool
+
+      def completed?: () -> bool
+
+      def failed?: () -> bool
+    end
+  end
+end
