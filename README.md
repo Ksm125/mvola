@@ -12,13 +12,13 @@ MVola is a Ruby gem that provides a simple way to interact with the [Mvola Payme
 Install the gem and add to the application's Gemfile by executing:
 
 ```bash
-bundle add MVola
+bundle add mvola
 ```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
 ```bash
-gem install MVola
+gem install mvola
 ```
 
 ## Usage

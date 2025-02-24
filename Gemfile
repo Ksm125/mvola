@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in MVola.gemspec
+# Specify your gem's dependencies in mvola.gemspec
 gemspec
 
 gem "rake", "~> 13.0"

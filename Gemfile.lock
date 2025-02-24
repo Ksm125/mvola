@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    MVola (0.2.0)
+    mvola (0.2.0)
       activesupport (>= 7.1, < 7.2)
 
 GEM
@@ -94,7 +94,7 @@ GEM
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
     ruby-progressbar (1.13.0)
-    securerandom (0.3.1)
+    securerandom (0.4.1)
     standard (1.37.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -121,11 +121,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  MVola!
   bump (~> 0.10.0)
   bundler (<= 2.4)
   faker (<= 2.22)
   jwt (~> 2.9)
+  mvola!
   overcommit (~> 0.62)
   public_suffix (~> 4.0)
   rake (~> 13.0)
