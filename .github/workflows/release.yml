@@ -44,9 +44,18 @@ jobs:
           git config --global user.email "$(git log -1 --pretty=format:'%ae')"
           git config --global user.name "$(git log -1 --pretty=format:'%an')"
           git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          # Verify Git configuration
+          git config --global --list
 
-#      - name: Bump version
-#        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
+      - name: Bump version
+        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Bump version for release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Release
       - name: Release
