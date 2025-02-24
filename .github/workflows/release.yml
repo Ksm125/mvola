@@ -12,6 +12,7 @@ on:
           - minor
           - major
           - pre
+          - none
         default: pre
 
 
@@ -48,13 +49,8 @@ jobs:
           git config --global --list
 
       - name: Bump version
+        if: ${{ inputs.bump_type != 'none' }}
         run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
-
-      - name: Commit changes
-        run: |
-          git add .
-          git commit -m "Commit changes" || echo "No changes to commit"
-          git push
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
