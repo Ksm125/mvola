@@ -54,6 +54,7 @@ jobs:
         run: |
           git add .
           git commit -m "Commit changes" || echo "No changes to commit"
+          git push
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
