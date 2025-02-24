@@ -2,10 +2,10 @@
 
 module MVola
   class Transaction
-    # PaymentStatus is a class that represents the status of a payment.
-    # It is used as return value of the initiate_payment! and status of a transaction.
+    # Class that represents the status of a transaction.
+    # It is used as return value of the `initiate_payment!` and the status of a transaction.
     # This is aimed to be used internally, and not exposed to the public API.
-    class PaymentStatus
+    class Status
       extend Forwardable
 
       attr_reader :raw_response, :client_correlation_id

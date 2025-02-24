@@ -1,0 +1,34 @@
+module MVola
+  class Transaction
+    include Request
+
+
+    API_VERSION: String
+
+    ENDPOINT: ::String
+
+    CURRENCY: String
+
+    type fc_metadata = { key: "fc", value: String }
+    type amount_fc_metadata = { key: "amountFc", value: String }
+    type metadata_value = fc_metadata | amount_fc_metadata | { key: String, value: String }
+
+    @client: Client
+    attr_reader client: Client
+
+    def initialize: (?client: Client?) -> void
+
+    def initiate_payment!: (amount: Float | String, debit_phone_number: String, credit_phone_number: String, ?client_transaction_reference: String, ?original_transaction_reference: String, ?client_correlation_id: String, ?description: String?, ?callback_url: String?, ?metadata: Array[metadata_value]) -> untyped
+
+    def get_status: (String server_correlation_id, ?client_correlation_id: String) -> Status
+
+    def get_details: (String transaction_id, ?client_correlation_id: String) -> Details
+
+    private
+
+    # Generate the URL for the given path by joining the base URL and the endpoint.
+    def url_for: (?::String path) -> String
+
+    def build_headers: (client_correlation_id: String, ?callback_url: String?) -> Hash[String, untyped]
+  end
+end

@@ -1,6 +1,6 @@
 module MVola
   class Transaction
-    class PaymentStatus
+    class Status
       extend Forwardable
 
       type t_status = 'pending' | 'completed' | 'failed'

@@ -1,0 +1,62 @@
+module MVola
+  class Transaction
+    class Details
+      extend Forwardable
+
+      type t_status = 'completed' | 'failed'
+
+      type t_raw_response = {
+          "amount" => String,
+          "currency" => String,
+          "request_date" => String,
+          "debit_party" => Array[{ "key" => "msisdn", "value" => String }],
+          "credit_party" => Array[{ "key" => "msisdn", "value" => String }],
+          "fees" => Array[{ "feeAmount" => String }],
+          "metadata" => Array[{ "key" => String, "value" => String }],
+          "transaction_status" => t_status,
+          "creation_date" => String,
+          "transaction_reference" => String
+        }
+
+      @raw_response: t_raw_response
+
+      @client_correlation_id: String
+
+      attr_reader raw_response: untyped
+
+      attr_reader client_correlation_id: untyped
+
+      def initialize: (t_raw_response raw_response, client_correlation_id: String) -> void
+
+      def amount: () -> String
+
+      def currency: () -> String
+
+      def request_date: () -> String
+
+      def debit_party: () -> Array[{ "key" => "msisdn", "value" => String }]
+
+      def credit_party: () -> Array[{ "key" => "msisdn", "value" => String }]
+
+      def fees: () -> Array[{ "feeAmount" => String }]
+
+      def metadata: () -> Array[{ "key" => String, "value" => String }]
+
+      def transaction_status: () -> t_status
+
+      def creation_date: () -> String
+
+      def transaction_reference: () -> String
+
+      def completed?: () -> bool
+
+      def failed?: () -> bool
+
+      private
+
+      DELEGATED_METHOD_NAMES: Array[Symbol]
+
+      def define_delegators: () -> void
+    end
+  end
+end

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ee709d9-5032-4689-a8a2-5717386c6afb" name="Changes" comment="chore: support for ruby &gt;= 2.7" />
+    <list default="true" id="7ee709d9-5032-4689-a8a2-5717386c6afb" name="Changes" comment="feat: add transaction details and status classes with API response handling">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mvola/transaction.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mvola/transaction.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/mvola/transaction_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/mvola/transaction_spec.rb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,29 +18,30 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Ruby File" />
+        <option value="RBS Module" />
         <option value="Ruby Module" />
-        <option value="Ruby Class" />
         <option value="RBS Class" />
         <option value="RSpec" />
-        <option value="Ruby File" />
+        <option value="Ruby Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Ksm125"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Ksm125&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Ksm125/mvola.git",
-    "accountId": "af598ffa-aee9-4bd7-ac2a-98544fb8094c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Ksm125/mvola.git&quot;,
+    &quot;accountId&quot;: &quot;af598ffa-aee9-4bd7-ac2a-98544fb8094c&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -60,9 +66,15 @@
     "RSpec.MVola::Client#token when token is provided when token is a hash.executor": "Run",
     "RSpec.MVola::Client#token! forces the token to be refreshed.executor": "Run",
     "RSpec.MVola::Client.executor": "Run",
+    "RSpec.MVola::Transaction#get_details gets the details of a payment.executor": "Run",
+    "RSpec.MVola::Transaction#get_status.executor": "Run",
+    "RSpec.MVola::Transaction#initiate_payment! Use the client_correlation_id parameter if it is provided.executor": "Run",
+    "RSpec.MVola::Transaction.executor": "Run",
+    "RSpec.client_spec.executor": "Run",
+    "RSpec.transaction_spec.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#1 on Implement__transaction",
     "last_opened_file_path": "/Users/kassamhousseny/project/MVola",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -119,7 +131,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="MVola::Client" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="MVola::Transaction" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -138,11 +150,11 @@
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/client_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/transaction_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Transaction" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -155,7 +167,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="MVola::Client#token when token is provided when token is a Token object" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="MVola::Transaction#get_status" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -174,11 +186,11 @@
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/client_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/transaction_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token when token is provided when token is a Token object" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Transaction#get_status" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -191,7 +203,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="MVola::Client#token when token is provided when token is a hash uses the provided token" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="MVola::Transaction#initiate_payment! Use the client_correlation_id parameter if it is provided" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -210,11 +222,11 @@
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/client_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/transaction_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token when token is provided when token is a hash uses the provided token" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Transaction#initiate_payment! Use the client_correlation_id parameter if it is provided" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -227,7 +239,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="MVola::Client#token when token is provided when token is a hash" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="transaction_spec" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="MVola" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -246,11 +258,11 @@
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/client_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/mvola/transaction_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="MVola::Client#token when token is provided when token is a hash" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_EXAMPLE_MATCHES" VALUE="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="LINE_NUMBER_EXAMPLE_IDS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
@@ -266,17 +278,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="RSpec.All specs in spec: MVola" />
-        <item itemvalue="RSpec.MVola::Client" />
-        <item itemvalue="RSpec.MVola::Client#token when token is provided when token is a Token object" />
-        <item itemvalue="RSpec.MVola::Client#token when token is provided when token is a hash uses the provided token" />
-        <item itemvalue="RSpec.MVola::Client#token when token is provided when token is a hash" />
+        <item itemvalue="RSpec.transaction_spec" />
+        <item itemvalue="RSpec.MVola::Transaction" />
+        <item itemvalue="RSpec.MVola::Transaction#get_status" />
+        <item itemvalue="RSpec.MVola::Transaction#initiate_payment! Use the client_correlation_id parameter if it is provided" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-RM-243.22562.213" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-RM-243.24978.74" />
       </set>
     </attachedChunks>
   </component>
@@ -292,6 +304,8 @@
       <workItem from="1735546563290" duration="476000" />
       <workItem from="1735547047278" duration="445000" />
       <workItem from="1735547500779" duration="22590000" />
+      <workItem from="1740318908120" duration="4117000" />
+      <workItem from="1740337972133" duration="16842000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -453,7 +467,103 @@
       <option name="project" value="LOCAL" />
       <updated>1735573377240</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="ci: add option to `pre` pre-release ci">
+      <option name="closed" value="true" />
+      <created>1735908496262</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1735908496262</updated>
+    </task>
+    <task id="LOCAL-00022" summary="ci: add option to `pre` pre-release ci">
+      <option name="closed" value="true" />
+      <created>1735909139905</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1735909139905</updated>
+    </task>
+    <task id="LOCAL-00023" summary="ci: add option to `pre` pre-release ci">
+      <option name="closed" value="true" />
+      <created>1735909809968</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1735909809968</updated>
+    </task>
+    <task id="LOCAL-00024" summary="ci: add option to `pre` pre-release ci">
+      <option name="closed" value="true" />
+      <created>1735910451212</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1735910451212</updated>
+    </task>
+    <task id="LOCAL-00025" summary="ci: add option to `pre` pre-release ci">
+      <option name="closed" value="true" />
+      <created>1735911468807</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1735911468807</updated>
+    </task>
+    <task id="LOCAL-00026" summary="chore: debug release action">
+      <option name="closed" value="true" />
+      <created>1735911724560</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1735911724560</updated>
+    </task>
+    <task id="LOCAL-00027" summary="chore: debug release action">
+      <option name="closed" value="true" />
+      <created>1735912692316</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1735912692316</updated>
+    </task>
+    <task id="LOCAL-00028" summary="chore: update minimum ruby version spec">
+      <option name="closed" value="true" />
+      <created>1735913443443</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1735913443443</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feat: add transaction details and status classes with API response handling">
+      <option name="closed" value="true" />
+      <created>1740411852790</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1740411852790</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat: add transaction details and status classes with API response handling">
+      <option name="closed" value="true" />
+      <created>1740411915902</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1740411915902</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feat: add transaction details and status classes with API response handling">
+      <option name="closed" value="true" />
+      <created>1740412081402</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1740412081402</updated>
+    </task>
+    <task id="LOCAL-00032" summary="feat: add transaction details and status classes with API response handling">
+      <option name="closed" value="true" />
+      <created>1740412260581</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1740412260581</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,15 +615,25 @@
     <MESSAGE value="chore: support for ruby 2.5" />
     <MESSAGE value="chore: support for ruby 2" />
     <MESSAGE value="chore: support for ruby &gt;= 2.7" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: support for ruby &gt;= 2.7" />
+    <MESSAGE value="ci: add option to `pre` pre-release ci" />
+    <MESSAGE value="chore: debug release action" />
+    <MESSAGE value="chore: update minimum ruby version spec" />
+    <MESSAGE value="feat: add transaction details and status classes with API response handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add transaction details and status classes with API response handling" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/MVola@MVola__Transaction.rcov" NAME="MVola::Transaction Coverage Results" MODIFIED="1740408289921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_refreshes_the_token_if_expires_margin_is_reached.rcov" NAME="MVola::Client#token refreshes the token if expires margin is reached Coverage Results" MODIFIED="1735567486982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Transaction_initiate_payment__Use_the_client_correlation_id_parameter_if_it_is_provided.rcov" NAME="MVola::Transaction#initiate_payment! Use the client_correlation_id parameter if it is provided Coverage Results" MODIFIED="1740408010862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_token_is_provided_when_token_is_a_Token_object.rcov" NAME="MVola::Client#token when token is provided when token is a Token object Coverage Results" MODIFIED="1735570284693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
-    <SUITE FILE_PATH="coverage/MVola@MVola__Client.rcov" NAME="MVola::Client Coverage Results" MODIFIED="1735570342652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Client.rcov" NAME="MVola::Client Coverage Results" MODIFIED="1740400645063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Transaction_get_details_gets_the_details_of_a_payment.rcov" NAME="MVola::Transaction#get_details gets the details of a payment Coverage Results" MODIFIED="1740407874217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_refreshes_the_token_if_no_longer_valid.rcov" NAME="MVola::Client#token refreshes the token if no longer valid Coverage Results" MODIFIED="1735567436479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@transaction_spec.rcov" NAME="transaction_spec Coverage Results" MODIFIED="1740409584055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@client_spec.rcov" NAME="client_spec Coverage Results" MODIFIED="1740400817096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@MVola__Transaction_get_status.rcov" NAME="MVola::Transaction#get_status Coverage Results" MODIFIED="1740408065053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_when_sandbox_is_false.rcov" NAME="MVola::Client#token when sandbox is false Coverage Results" MODIFIED="1735567647666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
-    <SUITE FILE_PATH="coverage/MVola@All_specs_in_spec__MVola.rcov" NAME="All specs in spec: MVola Coverage Results" MODIFIED="1735572137941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
+    <SUITE FILE_PATH="coverage/MVola@All_specs_in_spec__MVola.rcov" NAME="All specs in spec: MVola Coverage Results" MODIFIED="1740414139539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_fetches_a_new_token_from_provider_if_no_token_defined.rcov" NAME="MVola::Client#token fetches a new token from provider if no token defined Coverage Results" MODIFIED="1735570585651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token_only_fetches_token_once_if_called_multiple_times.rcov" NAME="MVola::Client#token only fetches token once if called multiple times Coverage Results" MODIFIED="1735567047662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />
     <SUITE FILE_PATH="coverage/MVola@MVola__Client_token__forces_the_token_to_be_refreshed.rcov" NAME="MVola::Client#token! forces the token to be refreshed Coverage Results" MODIFIED="1735567730827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="MVola" />

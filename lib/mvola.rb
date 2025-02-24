@@ -2,8 +2,10 @@
 
 require "logger"
 require "base64"
-require "json"
 require "time"
+require "active_support"
+require "active_support/core_ext"
+require "active_support/inflector"
 require_relative "mvola/version"
 require_relative "mvola/errors"
 require_relative "mvola/client"
