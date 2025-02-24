@@ -47,9 +47,9 @@ module MVola
         request.body = json.to_json
       end
 
-      logger.debug("POST #{url} #{args}")
+      puts("POST #{url} #{args}")
       response = build_http(uri, args).request(request)
-      logger.debug("Response: #{response.code} #{response.body.inspect}")
+      puts("Response: #{response.code} #{response.body.inspect}")
 
       handle_error(response)
 
@@ -73,7 +73,7 @@ module MVola
       when 401
         raise MVola::Unauthorized, response.body
       else
-        raise MVola::InvalidRequest, response.body
+        raise MVola::InvalidRequest, "Code: #{response.code}, Body: #{response.body}"
       end
     end
   end

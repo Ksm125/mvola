@@ -12,15 +12,15 @@ on:
           - minor
           - major
           - pre
-        default: patch
+        default: pre
 
 
 jobs:
-  test:
+  build:
     uses: ./.github/workflows/ruby.yml
 
   push:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
 
     permissions:
@@ -28,8 +28,9 @@ jobs:
       id-token: write
 
     steps:
-      # Set up
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -37,11 +38,20 @@ jobs:
           bundler-cache: true
           ruby-version: ruby
 
-      - name: Bump version
-        run: bundle exec bump ${{ inputs.bump_type }} --no-commit --changelog --no-bundle
+      - name: Set remote URL
+        run: |
+          # Attribute commits to the last committer on HEAD
+          git config --global user.email "$(git log -1 --pretty=format:'%ae')"
+          git config --global user.name "$(git log -1 --pretty=format:'%an')"
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
+
+#      - name: Bump version
+#        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
 
       # Release
       - name: Release
+        uses: cadwallion/publish-rubygems-action@master
         env:
-          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-        run: bundle exec rake release
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
+          RELEASE_COMMAND: rake release

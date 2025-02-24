@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "base64"
-require "json"
 require_relative "client/token"
 require_relative "request"
 
@@ -11,16 +9,51 @@ module MVola
 
     SANDBOX_URL = "https://devapi.mvola.mg"
     PRODUCTION_URL = "https://api.mvola.mg"
+    SANDBOX_PARTNER_PHONE_NUMBER = "0343500003"
 
-    attr_reader :consumer_key, :consumer_secret, :sandbox
+    USER_LANGUAGES = {
+      fr: "FR",
+      mg: "MG"
+    }.freeze
+
+    attr_reader :consumer_key, :consumer_secret, :partner_name, :partner_phone_number, :user_language, :sandbox
     alias_method :sandbox?, :sandbox
 
-    def initialize(consumer_key:, consumer_secret:, sandbox: false, token: nil)
+    # @param consumer_key [String] the consumer key provided by MVola for the application
+    # @param consumer_secret [String] the consumer secret provided by MVola for the application
+    # @param partner_name [String] the name of the partner account
+    # @param partner_phone_number [String] the phone number of the partner account.
+    #   This is replaced by a default value in the sandbox environment
+    # @param sandbox [Boolean] whether to use the sandbox environment or not.
+    # @param token [Hash, Token] a previous stored token to use for the client.
+    #   If provided and that it is still valid, it will be used instead of fetching a new one.
+    def initialize(consumer_key: ENV["MVOLA_CONSUMER_KEY"],
+      consumer_secret: ENV["MVOLA_CONSUMER_SECRET"],
+      partner_name: ENV["MVOLA_PARTNER_NAME"],
+      partner_phone_number: ENV["MVOLA_PARTNER_PHONE_NUMBER"],
+      sandbox: false,
+      user_language: USER_LANGUAGES[:fr],
+      token: nil)
+      raise ArgumentError, "consumer_key is required" unless consumer_key
+      raise ArgumentError, "consumer_secret is required" unless consumer_secret
+      raise ArgumentError, "partner_name is required" unless partner_name
+
+      partner_phone_number = SANDBOX_PARTNER_PHONE_NUMBER if sandbox
+      raise ArgumentError, "partner_phone_number is required" unless partner_phone_number
+
+      # Warn invalid user language if not one of the supported languages
+      unless USER_LANGUAGES.key?(user_language.downcase.to_sym)
+        logger.warn "Invalid user language: #{user_language}. Using default language: #{USER_LANGUAGES[:fr]}"
+      end
+
       @consumer_key = consumer_key
       @consumer_secret = consumer_secret
+      @partner_name = partner_name
+      @partner_phone_number = partner_phone_number
       @sandbox = sandbox
-      @mutex = Mutex.new
       @token = build_token_from(token)
+      @user_language = USER_LANGUAGES.fetch(user_language.downcase.to_sym, USER_LANGUAGES[:fr])
+      @mutex = Mutex.new
     end
 
     # Get the token. If the token is not valid, it will be refreshed.
@@ -38,12 +71,12 @@ module MVola
       token
     end
 
-    private
-
     # This method is used to determine the base URL for the API requests.
     def base_url
       sandbox? ? SANDBOX_URL : PRODUCTION_URL
     end
+
+    private
 
     # This method is used to build a token object from a hash or a token object.
     def build_token_from(data)
@@ -52,6 +85,7 @@ module MVola
 
       hash = data.dup
       hash[:expires_at] ||= Time.now + hash.delete(:expires_in).to_i
+      hash[:expires_at] = Time.parse(hash[:expires_at].to_s) if hash[:expires_at].is_a?(String)
       Token.new(**hash)
     end
 
@@ -63,6 +97,7 @@ module MVola
       }
     end
 
+    # Perform a request to fetch a new token from the MVola API.
     def fetch_token
       url = URI.join(base_url, "token").to_s
       body = {
