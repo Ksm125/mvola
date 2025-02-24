@@ -43,7 +43,7 @@ jobs:
           # Attribute commits to the last committer on HEAD
           git config --global user.email "$(git log -1 --pretty=format:'%ae')"
           git config --global user.name "$(git log -1 --pretty=format:'%an')"
-          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
 
 #      - name: Bump version
 #        run: bundle exec bump ${{ inputs.bump_type }} --changelog --no-bundle
