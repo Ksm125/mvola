@@ -3,7 +3,7 @@
 require_relative "lib/mvola/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "MVola"
+  spec.name = "mvola"
   spec.version = MVola::VERSION
   spec.authors = ["Kassam"]
   spec.email = ["kassam.housseny@gmail.com"]
