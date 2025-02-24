@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mvola (0.2.0)
+    mvola (1.0.0)
       activesupport (>= 7.1, < 7.2)
 
 GEM
