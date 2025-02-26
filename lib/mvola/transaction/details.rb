@@ -10,17 +10,17 @@ module MVola
       #   {
       #     "amount"=>"10000.00",
       #     "currency"=>"Ar",
-      #     "request_date"=>"2025-02-23T22:20:41.265Z",
-      #     "debit_party"=>[{"key"=>"msisdn", "value"=>"0343500003"}],
-      #     "credit_party"=>[{"key"=>"msisdn", "value"=>"0343500004"}],
+      #     "requestDate"=>"2025-02-23T22:20:41.265Z",
+      #     "debitParty"=>[{"key"=>"msisdn", "value"=>"0343500003"}],
+      #     "creditParty"=>[{"key"=>"msisdn", "value"=>"0343500004"}],
       #     "fees"=>[{"feeAmount"=>"0"}],
       #     "metadata"=>[
       #       {"key"=>"originalTransactionResult", "value"=>"0"},
       #       {"key"=>"originalTransactionResultDesc", "value"=>"0"}
       #      ],
-      #     "transaction_status"=>"completed",
-      #     "creation_date"=>"2025-02-23T19:19:34.707Z",
-      #     "transaction_reference"=>"653805064"
+      #     "transactionStatus"=>"completed",
+      #     "creationDate"=>"2025-02-23T19:19:34.707Z",
+      #     "transactionReference"=>"653805064"
       #   }
       # @param [String] client_correlation_id
       def initialize(raw_response, client_correlation_id:)
@@ -54,11 +54,15 @@ module MVola
         transaction_reference
       ].freeze
 
-      # Define methods to delegate to raw_response["key"]
+      # Define methods to delegate to raw_response["key"]. This is done dynamically
+      # @example of a method:
+      #   def transaction_status
+      #     raw_response["transactionStatus"]
+      #   end
       def define_delegators
         DELEGATED_METHOD_NAMES.each do |method_name|
           self.class.send(:define_method, method_name) do
-            raw_response[method_name.to_s]
+            raw_response[method_name.to_s.camelcase(:lower)]
           end
         end
       end
