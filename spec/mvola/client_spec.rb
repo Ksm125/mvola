@@ -46,6 +46,56 @@ RSpec.describe MVola::Client do
     request # Stub the request
   end
 
+  describe ".new" do
+    it "initializes with env variables if no arguments are passed" do
+      allow(ENV).to receive(:[]).with("MVOLA_CONSUMER_KEY").and_return(consumer_key)
+      allow(ENV).to receive(:[]).with("MVOLA_CONSUMER_SECRET").and_return(consumer_secret)
+      allow(ENV).to receive(:[]).with("MVOLA_PARTNER_NAME").and_return(partner_name)
+      allow(ENV).to receive(:[]).with("MVOLA_PARTNER_PHONE_NUMBER").and_return(partner_phone_number)
+
+      client = described_class.new
+
+      expect(client.consumer_key).to eq(consumer_key)
+      expect(client.consumer_secret).to eq(consumer_secret)
+      expect(client.partner_name).to eq(partner_name)
+      expect(client.partner_phone_number).to eq(partner_phone_number)
+    end
+
+    it "raises an error if no consumer key is provided" do
+      expect { described_class.new }.to raise_error(ArgumentError, "consumer_key is required")
+    end
+
+    it "raises an error if no consumer secret is provided" do
+      expect do
+        described_class.new(consumer_key: consumer_key)
+      end.to raise_error(ArgumentError, "consumer_secret is required")
+    end
+
+    it "raises an error if no partner name is provided" do
+      expect do
+        described_class.new(consumer_key: consumer_key, consumer_secret: consumer_secret)
+      end.to raise_error(ArgumentError, "partner_name is required")
+    end
+
+    it "raises an error if no partner phone number is provided" do
+      expect do
+        described_class.new(consumer_key: consumer_key, consumer_secret: consumer_secret, partner_name: partner_name)
+      end.to raise_error(ArgumentError, "partner_phone_number is required")
+    end
+
+    it "raises an error if the partner phone number is not in the safe sandbox phone numbers" do
+      expect do
+        described_class.new(
+          consumer_key: consumer_key,
+          consumer_secret: consumer_secret,
+          partner_name: partner_name,
+          partner_phone_number: Faker::PhoneNumber.cell_phone,
+          sandbox: true
+        )
+      end.to raise_error(ArgumentError, "partner_phone_number must be one of #{MVola::Client::SAFE_SANDBOX_PHONE_NUMBERS} in sandbox mode")
+    end
+  end
+
   describe "#token" do
     it "fetches a new token from provider if no token defined" do
       Timecop.freeze do
@@ -89,15 +139,17 @@ RSpec.describe MVola::Client do
       expect(request).to have_been_made.twice
     end
 
-    context "when sandbox is false" do
+    context "when sandbox mode" do
       let(:base_url) { MVola::Client::SANDBOX_URL }
+      let(:partner_phone_number) { MVola::Client::SAFE_SANDBOX_PHONE_NUMBERS.sample }
 
       subject(:client) do
         described_class.new(
           consumer_key: consumer_key,
           consumer_secret: consumer_secret,
           sandbox: true,
-          partner_name: partner_name
+          partner_name: partner_name,
+          partner_phone_number: partner_phone_number
         )
       end
 

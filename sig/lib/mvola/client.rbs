@@ -10,7 +10,7 @@ module MVola
 
     SANDBOX_URL: String
     PRODUCTION_URL: String
-    SANDBOX_PARTNER_PHONE_NUMBER: String
+    SAFE_SANDBOX_PHONE_NUMBERS: Array[String]
     USER_LANGUAGES: Hash[Symbol, String]
 
     @consumer_key: String

@@ -18,5 +18,5 @@ module MVola
 
   # Set up a default logger
   self.logger = Logger.new($stdout) # Logs to the console
-  logger.level = Logger::INFO  # Default log level
+  logger.level = Logger::INFO # Default log level
 end

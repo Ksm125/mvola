@@ -70,10 +70,16 @@ module MVola
       case response.code.to_i
       when 200..299
         # Do nothing
+      when 400
+        raise MVola::BadRequestError, response.body
       when 401
-        raise MVola::Unauthorized, response.body
+        raise MVola::UnauthorizedError, response.body
+      when 404
+        raise MVola::NotFoundError, response.body
+      when 500..599
+        raise MVola::ServerError, response.body
       else
-        raise MVola::InvalidRequest, "Code: #{response.code}, Body: #{response.body}"
+        raise MVola::ApiError, response.body
       end
     end
   end

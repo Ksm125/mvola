@@ -9,7 +9,7 @@ module MVola
 
     SANDBOX_URL = "https://devapi.mvola.mg"
     PRODUCTION_URL = "https://api.mvola.mg"
-    SANDBOX_PARTNER_PHONE_NUMBER = "0343500003"
+    SAFE_SANDBOX_PHONE_NUMBERS = %w[0343500003 0343500004].freeze
 
     USER_LANGUAGES = {
       fr: "FR",
@@ -38,8 +38,11 @@ module MVola
       raise ArgumentError, "consumer_secret is required" unless consumer_secret
       raise ArgumentError, "partner_name is required" unless partner_name
 
-      partner_phone_number = SANDBOX_PARTNER_PHONE_NUMBER if sandbox
       raise ArgumentError, "partner_phone_number is required" unless partner_phone_number
+
+      if sandbox && !SAFE_SANDBOX_PHONE_NUMBERS.include?(partner_phone_number)
+        raise ArgumentError, "partner_phone_number must be one of #{SAFE_SANDBOX_PHONE_NUMBERS} in sandbox mode"
+      end
 
       # Warn invalid user language if not one of the supported languages
       unless USER_LANGUAGES.key?(user_language.downcase.to_sym)
